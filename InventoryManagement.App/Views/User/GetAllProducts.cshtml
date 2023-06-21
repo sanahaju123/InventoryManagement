@@ -1,0 +1,65 @@
+﻿@model IEnumerable<InventoryManagement.App.Models.Product>
+
+@{
+    ViewData["Title"] = "GetAllProducts";
+}
+
+<h4>Product List</h4>
+
+<p>
+    <a asp-action="AddProduct" class="btn btn-primary">Add New Product</a>
+   @Html.ActionLink("Export Excel", "ExportExcel_ProductData", "User", null, new { @class = "btn btn-primary"}) 
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th>
+
+            </th>
+            <th>
+                <b>Action</b>
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+                <td class="text-center">
+                    <a asp-action="UpdateProductDetails" class="btn btn-outline-primary" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td class="text-center">
+                    <a asp-action="GetProductDetails" class="btn btn-outline-info" asp-route-id="@item.Id">Details</a>
+                </td>
+                <td class="text-center">
+                    <a asp-action="DeleteProductById" class="btn btn-outline-danger" asp-route-id="@item.Id">Delete</a>
+        </tr>
+}
+    </tbody>
+</table>

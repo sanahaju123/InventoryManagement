@@ -1,0 +1,69 @@
+﻿@model IEnumerable<InventoryManagement.App.Models.Category>
+
+@{
+    ViewData["Title"] = "GetAllCategories";
+}
+
+<h4>Category List</h4>
+
+<p>
+    <a asp-action="AddCategory" class="btn btn-primary">Add New Category</a>
+    @Html.ActionLink("Export Excel", "ExportExcel_CategoryData", "User", null, new { @class = "btn btn-primary"})
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th>
+               
+            </th>
+            <th>
+               <b>Action</b>
+            </th>
+            <th>
+                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+           
+                <td class="text-center">
+                    <a asp-action="UpdateCategoryDetails" class="btn btn-outline-primary" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td class="text-center">
+                    <a asp-action="GetCategoryDetails" class="btn btn-outline-info" asp-route-id="@item.Id">Details</a>
+                </td>
+                <td class="text-center">
+                    <a asp-action="DeleteCategoryById" class="btn btn-outline-danger" asp-route-id="@item.Id">Delete</a>              
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>

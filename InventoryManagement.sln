@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement", "InventoryManagement\InventoryManagement.csproj", "{26B404F4-0870-4DA3-B713-A414CB8A80CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.BusinessLayer", "InventoryManagement.BusinessLayer\InventoryManagement.BusinessLayer.csproj", "{635E306E-757C-429E-8440-68B39285CAC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.DataLayer", "InventoryManagement.DataLayer\InventoryManagement.DataLayer.csproj", "{02AA33E8-9D3F-41FE-B858-3B92F592D98E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Entities", "InventoryManagement.Entities\InventoryManagement.Entities.csproj", "{55760EA0-AFEE-4ED5-B7EB-6D3E1485D1E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryManagement.API", "InventoryManagement.API", "{49A87198-121C-4D9C-B386-3F7D3C0030C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryManagement.Application", "InventoryManagement.Application", "{CEB0B7B3-F2B9-464A-B65B-4C6152DD9CC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.App", "InventoryManagement.App\InventoryManagement.App.csproj", "{B01E5B11-F9F6-4FE5-9955-A6AA6611D7AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26B404F4-0870-4DA3-B713-A414CB8A80CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26B404F4-0870-4DA3-B713-A414CB8A80CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26B404F4-0870-4DA3-B713-A414CB8A80CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26B404F4-0870-4DA3-B713-A414CB8A80CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{635E306E-757C-429E-8440-68B39285CAC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{635E306E-757C-429E-8440-68B39285CAC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{635E306E-757C-429E-8440-68B39285CAC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{635E306E-757C-429E-8440-68B39285CAC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02AA33E8-9D3F-41FE-B858-3B92F592D98E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02AA33E8-9D3F-41FE-B858-3B92F592D98E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02AA33E8-9D3F-41FE-B858-3B92F592D98E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02AA33E8-9D3F-41FE-B858-3B92F592D98E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55760EA0-AFEE-4ED5-B7EB-6D3E1485D1E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55760EA0-AFEE-4ED5-B7EB-6D3E1485D1E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55760EA0-AFEE-4ED5-B7EB-6D3E1485D1E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55760EA0-AFEE-4ED5-B7EB-6D3E1485D1E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B01E5B11-F9F6-4FE5-9955-A6AA6611D7AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B01E5B11-F9F6-4FE5-9955-A6AA6611D7AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B01E5B11-F9F6-4FE5-9955-A6AA6611D7AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B01E5B11-F9F6-4FE5-9955-A6AA6611D7AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{26B404F4-0870-4DA3-B713-A414CB8A80CE} = {49A87198-121C-4D9C-B386-3F7D3C0030C6}
+		{635E306E-757C-429E-8440-68B39285CAC1} = {49A87198-121C-4D9C-B386-3F7D3C0030C6}
+		{02AA33E8-9D3F-41FE-B858-3B92F592D98E} = {49A87198-121C-4D9C-B386-3F7D3C0030C6}
+		{55760EA0-AFEE-4ED5-B7EB-6D3E1485D1E9} = {49A87198-121C-4D9C-B386-3F7D3C0030C6}
+		{B01E5B11-F9F6-4FE5-9955-A6AA6611D7AA} = {CEB0B7B3-F2B9-464A-B65B-4C6152DD9CC4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54562A37-B1CE-4616-BBB9-640AB3FB2529}
+	EndGlobalSection
+EndGlobal
