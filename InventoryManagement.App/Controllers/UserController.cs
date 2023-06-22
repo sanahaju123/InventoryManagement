@@ -285,7 +285,7 @@ namespace InventoryManagement.App.Controllers
             List<Category> res = new List<Category>();
             using (HttpClient client = new HttpClient())
             {
-                string endpoint = apiBaseUrl + "Category/GetAllCategories";
+                string endpoint = apiBaseUrl + "Category/GetAllCategorys";
                 using (var Response = await client.GetAsync(endpoint))
                 {
                     if (Response.StatusCode == System.Net.HttpStatusCode.OK)
