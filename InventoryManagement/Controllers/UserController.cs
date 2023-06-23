@@ -22,20 +22,11 @@ namespace InventoryManagement.Controllers
             _scheduler = scheduler;
         }
 
-        [HttpGet("start-scheduler")]
-        public IActionResult StartScheduler()
-        {
-            _scheduler.Start();
-            return Ok();
-        }
-
-        [HttpGet("stop-scheduler")]
-        public IActionResult StopScheduler()
-        {
-            _scheduler.Stop();
-            return Ok();
-        }
-
+        /// <summary>
+        /// Create User
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("CreateUser")]
         [AllowAnonymous]
@@ -56,7 +47,11 @@ namespace InventoryManagement.Controllers
 
         }
 
-
+        /// <summary>
+        /// Update User
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("UpdateUser")]
         public async Task<IActionResult> UpdateUser([FromBody] UserViewModel model)
@@ -74,6 +69,11 @@ namespace InventoryManagement.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete User
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete]
         [Route("DeleteUser/{id}")]
         public async Task<IActionResult> DeleteUser([FromRoute] int id)
@@ -91,7 +91,11 @@ namespace InventoryManagement.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Get user by id
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetUserById")]
         public async Task<IActionResult> GetUserById(int userId)
@@ -108,6 +112,11 @@ namespace InventoryManagement.Controllers
             }
         }
 
+        /// <summary>
+        /// Login User
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("LoginUser")]
         [AllowAnonymous]
@@ -125,6 +134,11 @@ namespace InventoryManagement.Controllers
             }
         }
 
+        /// <summary>
+        /// Search User By name
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("SearchUserByName")]
         public async Task<IActionResult> SearchUserByName(int userId)
@@ -141,11 +155,37 @@ namespace InventoryManagement.Controllers
             }
         }
 
+        /// <summary>
+        /// Get all Users
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetAllUsers")]
         public async Task<IEnumerable<User>> GetAllUsers()
         {
             return await _userService.GetAllUsers();
+        }
+
+        /// <summary>
+        /// Start scheduler
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("start-scheduler")]
+        public IActionResult StartScheduler()
+        {
+            _scheduler.Start();
+            return Ok();
+        }
+
+        /// <summary>
+        /// Stop Scheduler
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("stop-scheduler")]
+        public IActionResult StopScheduler()
+        {
+            _scheduler.Stop();
+            return Ok();
         }
     }
 }

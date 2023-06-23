@@ -19,7 +19,11 @@ namespace CollegeManagement.Controllers
             _categoryService = categoryService;
         }
 
-
+        /// <summary>
+        /// To create Category
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("CreateCategory")]
         [AllowAnonymous]
@@ -40,7 +44,11 @@ namespace CollegeManagement.Controllers
 
         }
 
-
+        /// <summary>
+        /// To update category
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("UpdateCategory")]
         public async Task<IActionResult> UpdateCategory([FromBody] CategoryViewModel model)
@@ -58,7 +66,11 @@ namespace CollegeManagement.Controllers
             }
         }
 
-
+        /// <summary>
+        /// To delete category
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete]
         [Route("DeleteCategory/{id}")]
         public async Task<IActionResult> DeleteCategory([FromRoute] int id)
@@ -81,7 +93,11 @@ namespace CollegeManagement.Controllers
             }
         }
 
-
+        /// <summary>
+        /// To get category by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetCategoryById/{id}")]
         public async Task<IActionResult> GetCategoryById([FromRoute] int id)
@@ -98,6 +114,11 @@ namespace CollegeManagement.Controllers
             }
         }
 
+        /// <summary>
+        /// Search Category By Name
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("SearchCategoryByName")]
         public async Task<IActionResult> SearchCategoryByName(int categoryId)
@@ -114,6 +135,10 @@ namespace CollegeManagement.Controllers
             }
         }
 
+        /// <summary>
+        /// Get all categories
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetAllCategorys")]
         public async Task<IEnumerable<Category>> GetAllCategories()

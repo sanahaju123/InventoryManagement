@@ -21,7 +21,11 @@ namespace InventoryManagement.Controllers
             _productService = productService;
         }
 
-
+        /// <summary>
+        /// Create product
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("CreateProduct")]
         [AllowAnonymous]
@@ -47,6 +51,11 @@ namespace InventoryManagement.Controllers
         }
 
 
+        /// <summary>
+        /// To update product
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("UpdateProduct")]
         public async Task<IActionResult> UpdateProduct([FromBody] ProductViewModel model)
@@ -64,6 +73,11 @@ namespace InventoryManagement.Controllers
             }
         }
 
+        /// <summary>
+        /// To delete product
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete]
         [Route("DeleteProduct/{id}")]
         public async Task<IActionResult> DeleteProduct([FromRoute] int id)
@@ -87,7 +101,11 @@ namespace InventoryManagement.Controllers
             }
         }
 
-
+        /// <summary>
+        /// To get product by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetProductById/{id}")]
         public async Task<IActionResult> GetProductById([FromRoute] int id)
@@ -104,6 +122,11 @@ namespace InventoryManagement.Controllers
             }
         }
 
+        /// <summary>
+        /// Search product by name
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("SearchProductByName")]
         public async Task<IActionResult> SearchProductByName(int productId)
@@ -120,6 +143,10 @@ namespace InventoryManagement.Controllers
             }
         }
 
+        /// <summary>
+        /// Get all products
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetAllProducts")]
         public async Task<IEnumerable<Product>> GetAllProducts()

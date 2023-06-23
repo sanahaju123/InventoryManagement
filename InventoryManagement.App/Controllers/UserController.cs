@@ -723,29 +723,37 @@ namespace InventoryManagement.App.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteProductById(int id)
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                string endpoint = apiBaseUrl + "Product/DeleteProduct/" + id;
-                using (var Response = await client.DeleteAsync(endpoint))
+                using (HttpClient client = new HttpClient())
                 {
-                    if (Response.StatusCode == System.Net.HttpStatusCode.OK)
+                    string endpoint = apiBaseUrl + "Product/DeleteProduct/" + id;
+                    using (var Response = await client.DeleteAsync(endpoint))
                     {
-                        var jsonString = Response.Content.ReadAsStringAsync().Result;
+                        if (Response.StatusCode == System.Net.HttpStatusCode.OK)
+                        {
+                            var jsonString = Response.Content.ReadAsStringAsync().Result;
 
-                        var response = JsonConvert.DeserializeObject<IEnumerable<Product>>(jsonString);
+                            var response = JsonConvert.DeserializeObject<IEnumerable<Product>>(jsonString);
 
-                        return RedirectToAction("GetAllProducts");
-                    }
-                    else if (Response.StatusCode == System.Net.HttpStatusCode.Conflict)
-                    {
-                        ModelState.Clear();
-                        return View();
-                    }
-                    else
-                    {
-                        return View();
+                            return RedirectToAction("GetAllProducts");
+                        }
+                        else if (Response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                        {
+                            ModelState.Clear();
+                            return View();
+                        }
+                        else
+                        {
+                            return View();
+                        }
                     }
                 }
+                return View();
+            }
+            catch (Exception ex)
+            {
+
             }
         }
         #endregion
