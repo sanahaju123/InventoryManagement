@@ -164,7 +164,6 @@ namespace InventoryManagement.App.Controllers
             return sb.ToString();
         }
 
-
         public async Task<FileContentResult> ExportCSV_CategoryData()
         {
             var jsonString = "";
@@ -197,9 +196,6 @@ namespace InventoryManagement.App.Controllers
             Response.Headers.Add("X-Content-Type-Options", "nosniff");
             return File(Encoding.UTF8.GetBytes(csvContent), contentType);
         }
-
-
-
 
         [HttpGet]
         public ActionResult AddCategory()
