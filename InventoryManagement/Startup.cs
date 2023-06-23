@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace InventoryManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<InventoryDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));
-
+            services.AddSingleton<SchedulerService>();
             services.AddSwaggerGen();
             services.AddControllers();
             services.AddHttpClient();
@@ -43,7 +44,7 @@ namespace InventoryManagement
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICategoryService, CategoryService>();
-
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

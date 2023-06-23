@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace InventoryManagement.BusinessLayer.Services.Repository
 {
@@ -54,7 +55,7 @@ namespace InventoryManagement.BusinessLayer.Services.Repository
             try
             {
                 var result = _inventoryDbContext.Users.
-                OrderByDescending(x => x.Id).Take(10).ToList();
+                OrderByDescending(x => x.Id).Where(x => x.IsDeleted == false).Take(10).ToList();
                 return result;
             }
             catch (Exception ex)
@@ -62,6 +63,7 @@ namespace InventoryManagement.BusinessLayer.Services.Repository
                 throw (ex);
             }
         }
+       
 
         public async Task<User> GetUserById(int userId)
         {
@@ -73,6 +75,25 @@ namespace InventoryManagement.BusinessLayer.Services.Repository
             {
                 throw (ex);
             }
+        }
+
+        public async Task<bool> LoginUser(User user)
+        {
+            try
+            {
+                var data=  _inventoryDbContext.Users.SingleOrDefault(c=>c.UserName==user.UserName && c.IsDeleted==true);
+                if(data!=null && (data.UserName==user.UserName && data.Password == user.Password))
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+                return false;
+            }
+
         }
 
         public async Task<User> SearchUserByName(string name)

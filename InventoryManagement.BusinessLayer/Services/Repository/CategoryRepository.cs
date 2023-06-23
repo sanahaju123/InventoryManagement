@@ -36,7 +36,7 @@ namespace InventoryManagement.BusinessLayer.Services.Repository
             var category = await _inventoryDbContext.Categories.FindAsync(categoryId);
             try
             {
-                category.IsDeleted =false;
+                category.IsDeleted =true;
 
                 _inventoryDbContext.Categories.Update(category);
                 await _inventoryDbContext.SaveChangesAsync();
@@ -53,7 +53,7 @@ namespace InventoryManagement.BusinessLayer.Services.Repository
             try
             {
                 var result = _inventoryDbContext.Categories.
-                OrderByDescending(x => x.Id).Take(10).ToList();
+                OrderByDescending(x => x.Id).Where(x => x.IsDeleted == false).Take(10).ToList();
                 return result;
             }
             catch (Exception ex)

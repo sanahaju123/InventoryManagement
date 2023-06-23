@@ -35,7 +35,8 @@ namespace InventoryManagement.Controllers
                 Id = model.Id,
                 Name = model.Name,
                 CategoryId=model.CategoryId,
-                IsDeleted = model.IsDeleted
+                IsDeleted = model.IsDeleted,
+                price=model.price
             };
             var result = await _productService.CreateProduct(product);
             if (result == null)
@@ -64,14 +65,14 @@ namespace InventoryManagement.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteProduct")]
-        public async Task<IActionResult> DeleteProduct(int productId)
+        [Route("DeleteProduct/{id}")]
+        public async Task<IActionResult> DeleteProduct([FromRoute] int id)
         {
-            var product = await _productService.GetProductById(productId);
+            var product = await _productService.GetProductById(id);
             if (product == null)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response
-                { Status = "Error", Message = $"Product With Id = {productId} cannot be found" });
+                { Status = "Error", Message = $"Product With Id = {id} cannot be found" });
             }
             else
             {

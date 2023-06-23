@@ -1,10 +1,14 @@
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession(options => {
-    options.IdleTimeout = TimeSpan.FromMinutes(1);//You can set Time   
+    options.IdleTimeout = TimeSpan.FromMinutes(5);//You can set Time   
 });
+builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

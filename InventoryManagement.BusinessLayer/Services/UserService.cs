@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace InventoryManagement.BusinessLayer.Services
 {
@@ -37,6 +38,11 @@ namespace InventoryManagement.BusinessLayer.Services
         public async Task<User> GetUserById(int userId)
         {
             return await _userRepository.GetUserById(userId);
+        }
+
+        public async Task<bool> LoginUser(User user)
+        {
+            return await _userRepository.LoginUser(user);
         }
 
         public async Task<User> SearchUserByName(string name)

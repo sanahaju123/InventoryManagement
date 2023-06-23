@@ -1,7 +1,11 @@
 ﻿@model InventoryManagement.App.Models.Product
-
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@using Newtonsoft.Json;
 @{
     ViewData["Title"] = "UpdateProductDetails";
+    string json = Context.Session.GetString("ListData");
+    List<Category> myList = JsonConvert.DeserializeObject<List<Category>>(json);
 }
 
 
@@ -26,6 +30,18 @@
                 <input asp-for="price" class="form-control" />
                 <span asp-validation-for="price" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="CategoryId"></label>
+            <select asp-for="CategoryId" class="form-control">
+                <option value="">Please select</option>
+                    @foreach (var item in myList)
+                {
+                    <option value="@item.Id" selected="@((int)item.Id == (int)Model.Id)">@item.Name</option>
+                }
+            </select>
+               
+            </div>
+
             <div class="form-group form-check" hidden>
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted)

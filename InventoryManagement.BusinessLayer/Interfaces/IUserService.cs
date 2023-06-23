@@ -11,6 +11,7 @@ namespace InventoryManagement.BusinessLayer.Interfaces
     public interface IUserService
     {
         Task<User> CreateUser(User user);
+        Task<bool> LoginUser(User user);
         Task<User> GetUserById(int userId);
         Task<User> SearchUserByName(string name);
         Task<User> DeleteUserById(int userId);

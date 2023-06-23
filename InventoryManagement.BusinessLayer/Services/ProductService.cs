@@ -45,7 +45,8 @@ namespace InventoryManagement.BusinessLayer.Services
 
         public async Task<Product> UpdateProduct(ProductViewModel model)
         {
-            return await _productRepository.UpdateProduct(model);
+            var data=await _productRepository.UpdateProduct(model);
+            return data;
         }
     }
 }

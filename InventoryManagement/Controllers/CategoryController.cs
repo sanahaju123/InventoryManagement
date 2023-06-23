@@ -60,14 +60,14 @@ namespace CollegeManagement.Controllers
 
 
         [HttpDelete]
-        [Route("DeleteCategory")]
-        public async Task<IActionResult> DeleteCategory(int categoryId)
+        [Route("DeleteCategory/{id}")]
+        public async Task<IActionResult> DeleteCategory([FromRoute] int id)
         {
-            var category = await _categoryService.GetCategoryById(categoryId);
+            var category = await _categoryService.GetCategoryById(id);
             if (category == null)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response
-                { Status = "Error", Message = $"Category With Id = {categoryId} cannot be found" });
+                { Status = "Error", Message = $"Category With Id = {id} cannot be found" });
             }
             else
             {
@@ -75,7 +75,7 @@ namespace CollegeManagement.Controllers
                 model.IsDeleted = true;
                 model.Description = category.Description;
                 model.Name = category.Name;
-                model.Id= categoryId;
+                model.Id= id;
                 var result = await _categoryService.UpdateCategory(model);
                 return Ok(new Response { Status = "Success", Message = "Category deleted successfully!" });
             }

@@ -38,7 +38,7 @@ namespace InventoryManagement.BusinessLayer.Services.Repository
             var product = await _inventoryDbContext.Products.FindAsync(productId);
             try
             {
-                product.IsDeleted = false;
+                product.IsDeleted = true;
 
                 _inventoryDbContext.Products.Update(product);
                 await _inventoryDbContext.SaveChangesAsync();
@@ -55,7 +55,7 @@ namespace InventoryManagement.BusinessLayer.Services.Repository
             try
             {
                 var result = _inventoryDbContext.Products.
-                OrderByDescending(x => x.Id).Take(10).ToList();
+                OrderByDescending(x => x.Id).Where(x => x.IsDeleted == false).Take(10).ToList();
                 return result;
             }
             catch (Exception ex)
@@ -97,7 +97,7 @@ namespace InventoryManagement.BusinessLayer.Services.Repository
                 product.Name = model.Name;
                 product.price = model.price;
                 product.IsDeleted = model.IsDeleted;
-
+                product.CategoryId = model.CategoryId;
                 _inventoryDbContext.Products.Update(product);
                 await _inventoryDbContext.SaveChangesAsync();
                 return product;
