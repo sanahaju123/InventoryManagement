@@ -723,8 +723,6 @@ namespace InventoryManagement.App.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteProductById(int id)
         {
-            try
-            {
                 using (HttpClient client = new HttpClient())
                 {
                     string endpoint = apiBaseUrl + "Product/DeleteProduct/" + id;
@@ -749,12 +747,6 @@ namespace InventoryManagement.App.Controllers
                         }
                     }
                 }
-                return View();
-            }
-            catch (Exception ex)
-            {
-
-            }
         }
         #endregion
     }
